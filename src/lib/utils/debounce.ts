@@ -1,6 +1,6 @@
 type DebounceFunction = <T extends never[]>(
   func: (...args: T) => void,
-  delay: number
+  delay: number,
 ) => (...args: T) => void;
 
 export const debounce: DebounceFunction = (func, delay) => {

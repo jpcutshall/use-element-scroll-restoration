@@ -1,20 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
-import { debounce } from '../utils/debounce.ts';
-
-
+import { useCallback, useEffect, useState } from "react";
+import { debounce } from "../utils/debounce.ts";
 
 interface ScrollRestorationOptions {
   debounceTime?: number;
-  persist?: false | 'localStorage' | 'sessionStorage';
+  persist?: false | "localStorage" | "sessionStorage";
 }
 
 export function useScrollRestoration<U extends HTMLElement>(
   key: string,
-  { debounceTime = 100, persist = false }: ScrollRestorationOptions = {}
+  { debounceTime = 100, persist = false }: ScrollRestorationOptions = {},
 ) {
-  const [scrollRestoration, setScrollRestoration] = useState<Record<string, { scrollTop: number; scrollLeft: number }>>(
-    {}
-  );
+  const [scrollRestoration, setScrollRestoration] = useState<
+    Record<string, { scrollTop: number; scrollLeft: number }>
+  >({});
   const [element, setElement] = useState<U | null>(null);
   const ref = useCallback((element: U | null) => {
     if (element) {
@@ -39,9 +37,9 @@ export function useScrollRestoration<U extends HTMLElement>(
       }));
     }, debounceTime);
 
-    element.addEventListener('scroll', handleScroll);
+    element.addEventListener("scroll", handleScroll);
     return () => {
-      element.removeEventListener('scroll', handleScroll);
+      element.removeEventListener("scroll", handleScroll);
     };
   }, [debounceTime, key, element, persist, setScrollRestoration]);
 
@@ -52,7 +50,7 @@ export function useScrollRestoration<U extends HTMLElement>(
     if (hasRestoration) {
       element.scrollTo(
         currentScrollRestoration.scrollLeft,
-        currentScrollRestoration.scrollTop
+        currentScrollRestoration.scrollTop,
       );
     } else {
       let initialScrollRestoration = {
@@ -60,24 +58,25 @@ export function useScrollRestoration<U extends HTMLElement>(
         scrollLeft: element.scrollLeft,
       };
 
-      if (persist === 'localStorage') {
+      if (persist === "localStorage") {
         const savedScrollRestoration = localStorage.getItem(
-          `scrollRestoration-${key}`
+          `scrollRestoration-${key}`,
         );
         if (savedScrollRestoration) {
           initialScrollRestoration = JSON.parse(savedScrollRestoration);
         }
       }
 
-      if (persist === 'sessionStorage') {
+      if (persist === "sessionStorage") {
         const savedScrollRestoration = sessionStorage.getItem(
-          `scrollRestoration-${key}`
+          `scrollRestoration-${key}`,
         );
         if (savedScrollRestoration) {
           initialScrollRestoration = JSON.parse(savedScrollRestoration);
         }
       }
 
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setScrollRestoration((prevScrollRestoration) => ({
         ...prevScrollRestoration,
         [key]: initialScrollRestoration,
@@ -96,15 +95,15 @@ export function useScrollRestoration<U extends HTMLElement>(
   useEffect(() => {
     if (!persist || !currentScrollRestoration) return;
 
-    if (persist === 'localStorage') {
+    if (persist === "localStorage") {
       localStorage.setItem(
         `scrollRestoration-${key}`,
-        JSON.stringify(currentScrollRestoration)
+        JSON.stringify(currentScrollRestoration),
       );
-    } else if (persist === 'sessionStorage') {
+    } else if (persist === "sessionStorage") {
       sessionStorage.setItem(
         `scrollRestoration-${key}`,
-        JSON.stringify(currentScrollRestoration)
+        JSON.stringify(currentScrollRestoration),
       );
     }
   }, [key, persist, currentScrollRestoration]);
