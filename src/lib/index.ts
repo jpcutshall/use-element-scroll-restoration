@@ -1,1 +1,1 @@
-export { useScrollRestoration } from "./hooks/useScrollRestoration";
+export { useElementScrollRestoration } from "./hooks/useElementScrollRestoration";

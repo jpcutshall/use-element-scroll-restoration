@@ -1,7 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { useScrollRestoration } from "./useScrollRestoration";
+import { useElementScrollRestoration } from "./useElementScrollRestoration";
 
 const MOCK_KEY = "test-key";
 
@@ -12,10 +12,13 @@ function TestComponent({
   persist?: false | "localStorage" | "sessionStorage";
   debounceTime?: number;
 }) {
-  const { ref, setScroll } = useScrollRestoration<HTMLDivElement>(MOCK_KEY, {
-    persist,
-    debounceTime,
-  });
+  const { ref, setScroll } = useElementScrollRestoration<HTMLDivElement>(
+    MOCK_KEY,
+    {
+      persist,
+      debounceTime,
+    },
+  );
 
   return (
     <div

@@ -3,7 +3,7 @@
   "author": "Jacob Cutshall",
   "license": "MIT",
   "version": "1.0.0",
-  "description": "React hook for scroll restoration",
+  "description": "React hook for rstoring scroll position on specific elements",
   "type": "module",
   "main": "dist/index.umd.cjs",
   "moudle": "dist/index.js",
@@ -19,12 +19,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wildcatco/use-scroll-restoration.git"
+    "url": "git+https://github.com/jpcutshall/use-element-scroll-restoration"
   },
-  "homepage": "https://github.com/wildcatco/use-scroll-restoration#readme",
+  "homepage": "https://github.com/jpcutshall/use-element-scroll-restoration",
   "keywords": [
     "react",
-    "scroll-restoration"
+    "hook",
+    "scroll-restoration",
+    "use-scroll-restoration",
+    "use-element-scroll-restoration"
   ],
   "scripts": {
     "build": "vite build",

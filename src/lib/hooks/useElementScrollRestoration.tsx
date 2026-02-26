@@ -6,7 +6,7 @@ interface ScrollRestorationOptions {
   persist?: false | "localStorage" | "sessionStorage";
 }
 
-export function useScrollRestoration<U extends HTMLElement>(
+export function useElementScrollRestoration<U extends HTMLElement>(
   key: string,
   { debounceTime = 100, persist = false }: ScrollRestorationOptions = {},
 ) {
