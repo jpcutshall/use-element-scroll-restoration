@@ -1,6 +1,6 @@
 {
-  "name": "use-scroll-restoration",
-  "author": "Jihoo Kim",
+  "name": "use-element-scroll-restoration",
+  "author": "Jacob Cutshall",
   "license": "MIT",
   "version": "1.0.0",
   "description": "React hook for scroll restoration",
@@ -27,23 +27,28 @@
     "scroll-restoration"
   ],
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "lint": "eslint .",
+    "test": "vitest run"
   },
   "dependencies": {
-    "jotai": "^2.4.0",
-    "react": "^18.2.0"
+    "react": "^19.2.4"
   },
   "devDependencies": {
-    "@types/node": "^20.5.7",
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
+    "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^22.19.12",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.3",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^17.3.0",
+    "happy-dom": "^20.7.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vite-plugin-dts": "^3.5.2"
+    "typescript-eslint": "^8.56.1",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.18"
   }
 }

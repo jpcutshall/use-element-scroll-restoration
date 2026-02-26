@@ -1,10 +1,7 @@
-import { atom, useAtom } from 'jotai';
 import { useCallback, useEffect, useState } from 'react';
 import { debounce } from '../utils/debounce.ts';
 
-const scrollRestorationAtom = atom<
-  Record<string, { scrollTop: number; scrollLeft: number }>
->({});
+
 
 interface ScrollRestorationOptions {
   debounceTime?: number;
@@ -15,8 +12,8 @@ export function useScrollRestoration<U extends HTMLElement>(
   key: string,
   { debounceTime = 100, persist = false }: ScrollRestorationOptions = {}
 ) {
-  const [scrollRestoration, setScrollRestoration] = useAtom(
-    scrollRestorationAtom
+  const [scrollRestoration, setScrollRestoration] = useState<Record<string, { scrollTop: number; scrollLeft: number }>>(
+    {}
   );
   const [element, setElement] = useState<U | null>(null);
   const ref = useCallback((element: U | null) => {
