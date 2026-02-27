@@ -2,7 +2,7 @@
   "name": "use-element-scroll-restoration",
   "author": "Jacob Cutshall",
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "React hook for rstoring scroll position on specific elements",
   "type": "module",
   "main": "dist/index.umd.cjs",
